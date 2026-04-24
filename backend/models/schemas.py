@@ -8,7 +8,7 @@ class IngestResponse(BaseModel):
     chunks_created:int
 
 # ── Query Schemas
-class QuerySchemas(BaseModel):
+class QueryRequest(BaseModel):
     question:str
     top_k:Optional[int] = 5
 
@@ -26,7 +26,7 @@ class QueryResponse(BaseModel):
     confidence: float
 
 # ── Conversation Schemas
-class QueryRequest(BaseModel):
+class ConversationRequest(BaseModel):
     question: str
     conversation_id: Optional[str] = None
     top_k: Optional[int] = 5
