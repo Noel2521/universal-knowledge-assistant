@@ -12,7 +12,7 @@ from backend.models.schemas import (
     Source
 )
 
-from backend.ingestion.loader import load_document, load_all_documents
+from backend.ingestion.loader import load_document
 from backend.ingestion.chunker import chunk_documents
 from backend.retrieval.embedder import get_embedding_model
 from backend.retrieval.vectorstore import get_vectorstore
