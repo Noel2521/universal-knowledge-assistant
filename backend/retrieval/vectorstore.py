@@ -49,5 +49,8 @@ def get_vectorstore(
     """
     if VECTORSTORE_DIR.exists() and any(VECTORSTORE_DIR.iterdir()):
         return load_vectorstore(embedding_model)
-    else:
+    elif chunks is not None:
         return create_vectorstore(chunks, embedding_model)
+    else:
+        logger.info("No vectorstore exists yet. Waiting for documents.")
+        return None
