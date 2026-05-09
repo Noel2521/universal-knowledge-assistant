@@ -6,7 +6,6 @@ from langchain_community.document_loaders import (
 from pathlib import Path
 from typing import List
 from langchain.schema import Document
-
 import logging
 
 logger = logging.getLogger(__name__)
@@ -20,14 +19,13 @@ def load_document(file_path: str) -> List[Document]:
     extension = path.suffix.lower()
 
     if extension == '.pdf':
-        loader= PyPDFLoader(str(path))
+        loader = PyPDFLoader(str(path))
     elif extension == '.docx':
         loader = Docx2txtLoader(str(path))
     elif extension == '.csv':
         loader = CSVLoader(str(path))
     else:
-        raise ValueError(f"Unsupported file type:{extension}")
-    
+        raise ValueError(f"Unsupported file type: {extension}")
     try:
         documents = loader.load()
         logger.info(f"Loaded {len(documents)} pages from {path.name}")
@@ -51,6 +49,5 @@ def load_all_documents(upload_dir: str) -> List[Document]:
             except Exception as e:
                 logger.warning(f"Skipping {file_path.name}: {e}")
 
-    logger.info(f"Total documents loaded: {len(all_documents)}") 
+    logger.info(f"Total documents loaded: {len(all_documents)}")
     return all_documents
-
