@@ -63,9 +63,7 @@ with tab1:
                     st.markdown("### 📝 Answer")
                     st.write(data["answer"])
                     st.markdown(f"**Confidence Score: {data['confidence']}**")
-                else:
-                    st.error("Failed to get answer. Are documents ingested?")
-
+        
                     # ── Sources ───────────────────────
                     st.markdown("### 📚 Sources")
                     for i, source in enumerate(data["sources"]):
@@ -74,6 +72,9 @@ with tab1:
                                 st.write(f"**Page:** {source['page']}")
                             st.write(f"**Relevance:** {source['relevance_score']}")
                             st.write(f"**Preview:** {source['chunk_preview']}")
+                else:
+                    st.error("Failed to get answer. Are documents ingested?")
+
 
 # ── Tab 2: Conversation ───────────────────────────────
 with tab2:
